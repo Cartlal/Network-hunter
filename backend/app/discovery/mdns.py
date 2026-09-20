@@ -90,7 +90,7 @@ def _query_sync(ips: list[str], local_ip: str) -> dict[str, str]:
     while time.monotonic() < end:
         try:
             data, _ = sock.recvfrom(8192)
-        except socket.timeout:
+        except TimeoutError:
             continue
         except OSError:
             break
