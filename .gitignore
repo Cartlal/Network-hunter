@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+backend/netmap.db
+node_modules/
+frontend/dist/
+.env
+*.tsbuildinfo
+.pytest_cache/
+*.egg-info/
+frontend/vite.config.js
+frontend/vite.config.d.ts
+.claude/scheduled_tasks.lock

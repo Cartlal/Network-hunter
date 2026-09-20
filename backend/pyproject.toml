@@ -1,0 +1,28 @@
+[project]
+name = "netmap-backend"
+version = "0.1.0"
+description = "NetMap Live - backend for real network topology discovery and monitoring"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "sqlalchemy>=2.0.35",
+    "aiosqlite>=0.20.0",
+    "pydantic>=2.9.0",
+    "icmplib>=3.0.4",
+    "pysnmp>=7.1.0",
+]
+
+[project.optional-dependencies]
+postgres = ["asyncpg>=0.29.0"]
+dev = ["ruff>=0.6.0", "pytest>=8.3.0", "pytest-asyncio>=0.24.0"]
+
+[tool.setuptools]
+packages = ["app"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
