@@ -42,6 +42,9 @@ export function useNetworkState() {
     fetchSecurityOverview().then(setSecurityOverview);
     fetchSecurityFindings().then(setSecurityFindings);
   }, []);
+  const refreshTopology = useCallback(() => {
+    fetchTopology().then(setTopology);
+  }, []);
 
   useEffect(() => {
     fetchTopology().then(setTopology);
@@ -118,6 +121,7 @@ export function useNetworkState() {
     securityOverview,
     securityFindings,
     refreshSecurity,
+    refreshTopology,
     updateDevicePosition,
   };
 }

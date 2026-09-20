@@ -149,3 +149,17 @@ class SecurityFinding(Base):
     acknowledged_at: Mapped[datetime.datetime | None] = mapped_column(DateTime, nullable=True)
 
     device: Mapped["Device"] = relationship()
+
+
+class SpeedTestResult(Base):
+    """One WAN speed test run (download/upload throughput + latency to the
+    nearest test server), triggered on demand from the Dashboard."""
+
+    __tablename__ = "speed_test_results"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    download_mbps: Mapped[float] = mapped_column(Float)
+    upload_mbps: Mapped[float] = mapped_column(Float)
+    ping_ms: Mapped[float] = mapped_column(Float)
+    server_name: Mapped[str] = mapped_column(String)
+    tested_at: Mapped[datetime.datetime] = mapped_column(DateTime, default=datetime.datetime.utcnow, index=True)

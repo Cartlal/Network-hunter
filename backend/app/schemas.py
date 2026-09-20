@@ -132,6 +132,17 @@ class SecurityFindingOut(BaseModel):
     acknowledged_at: datetime.datetime | None
 
 
+class SpeedTestResultOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    download_mbps: float
+    upload_mbps: float
+    ping_ms: float
+    server_name: str
+    tested_at: datetime.datetime
+
+
 class SecurityOverviewOut(BaseModel):
     network_score: int
     critical_count: int

@@ -49,7 +49,7 @@ def _guess_device_type(is_gateway: bool, vendor: str | None, hostname: str | Non
     return "unknown"
 
 
-async def _run_scan_once() -> None:
+async def run_scan_once() -> None:
     gateway_ip = await get_default_gateway()
     latency_by_ip = await sweep_subnet()
     arp_table = await read_arp_table()
@@ -172,7 +172,7 @@ async def _run_scan_once() -> None:
 async def scan_loop() -> None:
     while True:
         try:
-            await _run_scan_once()
+            await run_scan_once()
         except Exception:
             logger.exception("Discovery scan failed")
         await asyncio.sleep(SCAN_INTERVAL_SECONDS)

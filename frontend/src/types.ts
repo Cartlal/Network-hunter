@@ -153,6 +153,15 @@ export interface SecurityFinding {
   acknowledged_at: string | null;
 }
 
+export interface SpeedTestResult {
+  id: number;
+  download_mbps: number;
+  upload_mbps: number;
+  ping_ms: number;
+  server_name: string;
+  tested_at: string;
+}
+
 export interface SecurityOverview {
   network_score: number;
   critical_count: number;

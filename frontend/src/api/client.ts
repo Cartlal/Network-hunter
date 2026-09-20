@@ -7,6 +7,7 @@ import type {
   Port,
   SecurityFinding,
   SecurityOverview,
+  SpeedTestResult,
   Topology,
 } from "../types";
 
@@ -88,4 +89,20 @@ export async function acknowledgeFinding(findingId: number): Promise<SecurityFin
 
 export async function triggerSecurityRescan(): Promise<void> {
   await apiFetch("/api/security/rescan", { method: "POST" });
+}
+
+export async function triggerTopologyRescan(): Promise<void> {
+  await apiFetch("/api/topology/rescan", { method: "POST" });
+}
+
+export async function runSpeedTest(): Promise<SpeedTestResult> {
+  return json(await apiFetch("/api/speedtest/run", { method: "POST" }));
+}
+
+export async function fetchLatestSpeedTest(): Promise<SpeedTestResult | null> {
+  return json(await apiFetch("/api/speedtest/latest"));
+}
+
+export async function fetchSpeedTestHistory(limit = 10): Promise<SpeedTestResult[]> {
+  return json(await apiFetch(`/api/speedtest/history?limit=${limit}`));
 }

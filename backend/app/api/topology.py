@@ -3,6 +3,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
+from app.discovery.scheduler import run_scan_once
 from app.models import Device, Link
 from app.schemas import TopologyOut
 from app.ws.manager import manager
@@ -15,6 +16,12 @@ async def get_topology(session: AsyncSession = Depends(get_session)) -> Topology
     devices = (await session.execute(select(Device))).scalars().all()
     links = (await session.execute(select(Link))).scalars().all()
     return TopologyOut(devices=devices, links=links)
+
+
+@router.post("/api/topology/rescan")
+async def trigger_rescan() -> dict:
+    await run_scan_once()
+    return {"status": "ok"}
 
 
 @router.websocket("/ws/topology")

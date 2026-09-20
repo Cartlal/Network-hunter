@@ -23,6 +23,7 @@ from app.api.devices import router as devices_router
 from app.api.history import router as history_router
 from app.api.ports import router as ports_router
 from app.api.security import router as security_router
+from app.api.speedtest import router as speedtest_router
 from app.api.topology import router as topology_router
 from app.db import init_db
 from app.discovery.lldp_cdp import reconcile_links_loop
@@ -68,6 +69,7 @@ app.include_router(alerts_router)
 app.include_router(activity_router)
 app.include_router(ports_router)
 app.include_router(security_router)
+app.include_router(speedtest_router)
 
 
 @app.get("/api/health")

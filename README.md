@@ -26,7 +26,11 @@ connects.
   checked and why.
 - **Live topology** — automatic device discovery (ARP/ping/mDNS), physical
   link inference via LLDP/CDP when a managed switch is present, real-time
-  updates over a websocket.
+  updates over a websocket, and a manual **Refresh** button to force an
+  immediate rescan instead of waiting for the next cycle.
+- **Internet speed test** — on-demand download/upload throughput and ping
+  test from the Dashboard, backed by speedtest.net's public infrastructure;
+  results are saved so you can see how the connection trends over time.
 - **Device & port monitoring** — SNMP-based interface stats, bandwidth
   history, latency tracking.
 - **Alerting** — device-down, high-latency, and high-bandwidth-utilization

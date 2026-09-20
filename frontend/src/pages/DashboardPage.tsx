@@ -2,6 +2,7 @@ import { ActivityCard } from "../components/ActivityCard";
 import { AlertsCard } from "../components/AlertsCard";
 import { BandwidthCard } from "../components/BandwidthCard";
 import { HealthGauge } from "../components/HealthGauge";
+import { SpeedTestCard } from "../components/SpeedTestCard";
 import type { NetworkState } from "../hooks/useNetworkState";
 
 export function DashboardPage({ network }: { network: NetworkState }) {
@@ -39,6 +40,7 @@ export function DashboardPage({ network }: { network: NetworkState }) {
       <div className="stat-row">
         <HealthGauge devices={devices} alerts={alerts} />
         <BandwidthCard devices={devices} bandwidth={bandwidth} />
+        <SpeedTestCard />
         <AlertsCard alerts={alerts} />
         <ActivityCard activity={activity} />
       </div>
